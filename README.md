@@ -1,97 +1,147 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+Vehicle Auction App - React Native
+Overview
+This React Native application provides a platform for browsing and bidding on vehicles in an auction format. The app features a modern UI with filtering capabilities, vehicle details, and favorites management.
 
-# Getting Started
+Architecture
+The application follows a clean architecture pattern with separation of concerns:
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+src/
+├── components/         # Reusable UI components│   
+│   └── FilterChips.tsx       # Filter interface for vehicle search
+│   ├── VehicleCard.tsx       # Card component for vehicle listings
+│   ├── VehicleDetailScreen.tsx # Modal for detailed vehicle information
+│   └── FilterModal.tsx       # Filter interface for vehicle search
+├── entities/           # Data models and types
+│   └── Vehicle.ts      # Vehicle data structure and related types
+├── data/               # Local data
+│   └── vehicles.json   # Vehicle json
+├── services/               # Local data
+│   └── VehicleService.ts   # Vehicle service and business logic
+├── screens/               # Local data
+│   └── VehicleListScreen.ts   # Vehicle service and business logic
+├── presentation/       # UI logic and utilities
+│   └── utils/
+│       └── dateUtils.ts # Date manipulation utilities
+├── theme/             # Styling system
+│   ├── filterChipsStyles.ts       # Filter Chips styles
+│   ├── filterModalStyles.ts # Filter Modal style
+│   └── vehicleCardStyles.ts # Vehicle Card style
+└── App.tsx             # Main application component
 
-## Step 1: Start Metro
+Key Features
+1. Vehicle Browsing
+Grid/list view of available vehicles
+Card-based UI showing key vehicle information
+Auction countdown timer for each vehicle
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+2. Advanced Filtering
+Filter by make and model using chip selection
+Price range filtering with min/max inputs
+Favorites-only filter option
+Responsive filter modal with keyboard handling
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+3. Vehicle Details
+Comprehensive vehicle information display
+Auction details including starting bid and time remaining
+Favorite/unfavorite functionality
+Vehicle specifications and features list
 
-```sh
-# Using npm
-npm start
+4. Responsive UI
+Keyboard-aware components
+Adaptive layouts for different screen sizes
+Smooth animations and transitions
+Components
+VehicleCard
+A touchable card component displaying essential vehicle information:
 
-# OR using Yarn
-yarn start
-```
+Make and model
+Year, engine size, and fuel type
+Mileage
+Starting bid price
+Time remaining until auction
+Favorite toggle functionality
 
-## Step 2: Build and run your app
+VehicleDetailScreen
+A modal component showing comprehensive vehicle information:
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+Complete vehicle specifications
+Auction information
+Description and features
+Favorite toggle functionality
+Bid placement option
 
-### Android
+FilterModal
+A bottom sheet modal for filtering vehicle listings:
 
-```sh
-# Using npm
-npm run android
+Make and model selection with horizontal scrolling chips
+Price range input with numeric keyboard
+Favorites-only toggle
+Apply and reset functionality
+Keyboard-aware design to ensure inputs remain visible
 
-# OR using Yarn
-yarn android
-```
+Data Models
+Vehicle
+FilterOptions
+Styling System
+The application uses a theme-based styling approach:
 
-### iOS
+Component-specific theme files
+Consistent color palette
+Responsive spacing and typography
+Reusable style patterns
+Technical Implementation Details
+Keyboard Handling
+The FilterModal component implements advanced keyboard handling:
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+KeyboardAvoidingView to adjust layout when keyboard appears
+Auto-scrolling to keep input fields visible
+Keyboard dismissal when tapping outside inputs
+Input field focus management with refs
+Extra padding to prevent content from being hidden by keyboard
+State Management
+Local component state for UI interactions
+Props for component communication
+Callback patterns for actions (onPress, onFavoriteToggle, etc.)
+Responsive Design
+Percentage-based layouts
+Screen dimension awareness
+Flexible containers with appropriate constraints
+Getting Started
+Prerequisites
+Node.js (v14 or later)
+npm or yarn
+React Native development environment
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+Installation
+Clone the repository
+git clone https://github.com/yourusername/vehicle-auction-app.git
+Install dependencies
+cd vehicle-auction-app
+npm install
+Start the Metro bundler
+npx react-native start
 
-```sh
-bundle install
-```
+Run the application
+npx react-native run-android
 
-Then, and every time you update your native dependencies, run:
+# or
+npx react-native run-ios
 
-```sh
-bundle exec pod install
-```
+Best Practices Implemented
+Component Separation: Each UI element is encapsulated in its own component
+Type Safety: TypeScript interfaces for all props and data structures
+Theming: Consistent styling through theme files
+Accessibility: Proper keyboard handling and focus management
+Performance: Optimized rendering with appropriate component structure
+User Experience: Smooth animations and intuitive interactions
+Code Organization: Clear folder structure with separation of concerns
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Future Enhancements
+Repository pattern implementation from api data and from local data.
+Real-time bidding functionality
+Push notifications for auction updates
+Offline support with data persistence
+Advanced search capabilities
+Vehicle image gallery
+Bid history and analytics
+This README provides a comprehensive overview of the Vehicle Auction App's architecture, features, and implementation details. The application demonstrates modern React Native development practices with a focus on user experience and code maintainability.
