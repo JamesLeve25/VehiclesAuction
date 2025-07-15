@@ -114,7 +114,7 @@ React Native development environment
 
 Installation
 Clone the repository
-git clone https://github.com/yourusername/vehicle-auction-app.git
+git clone [https://github.com/JamesLeve25/VehiclesAuction.git]
 Install dependencies
 cd vehicle-auction-app
 npm install
