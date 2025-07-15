@@ -26,6 +26,9 @@ src/
 │   ├── filterChipsStyles.ts       # Filter Chips styles
 │   ├── filterModalStyles.ts # Filter Modal style
 │   └── vehicleCardStyles.ts # Vehicle Card style
+├── Tests/             # Styling system
+│   └── service/
+│       └── VehicelService.test.ts # Business logic test
 └── App.tsx             # Main application component
 
 Key Features
@@ -116,16 +119,21 @@ Installation
 Clone the repository
 git clone [https://github.com/JamesLeve25/VehiclesAuction.git]
 Install dependencies
-cd vehicle-auction-app
+cd /path/to/VehiclesAuction-main
+
+npm install --save-dev @react-native-community/cli
+rm -rf node_modules
+rm package-lock.json
 npm install
-Start the Metro bundler
+
+Start the react native cli
 npx react-native start
 
 Run the application
-npx react-native run-android
+npx react-native run-ios
 
 # or
-npx react-native run-ios
+npx react-native run-android
 
 Best Practices Implemented
 Component Separation: Each UI element is encapsulated in its own component
